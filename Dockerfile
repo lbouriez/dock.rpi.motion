@@ -1,4 +1,4 @@
-FROM remonlam/rpi-rasbian:jessie
+FROM resin/rpi-raspbian:jessie
 MAINTAINER Remon Lam <remon.lam@virtualclouds.info>
 
 RUN apt-get update && apt-get install -y wget tar && apt-get clean
