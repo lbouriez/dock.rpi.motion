@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Start motion
-/etc/motion/./motion
+motion /etc/motion/motion.conf
 
 service motion start
 
