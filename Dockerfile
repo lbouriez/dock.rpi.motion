@@ -1,13 +1,8 @@
-FROM resin/rpi-raspbian:jessie
-MAINTAINER Remon Lam <remon.lam@virtualclouds.info>
+FROM resin/rpi-raspbian:latest
 
-RUN apt-get update && apt-get install -y wget tar && apt-get clean
-RUN wget -P /tmp https://raw.githubusercontent.com/remonlam/rpi-docker-motion/master/install-motion.sh
-RUN wget -P / https://raw.githubusercontent.com/remonlam/rpi-docker-motion/master/entrypoint.sh
-RUN chmod 755 /./entrypoint.sh
-RUN chmod 755 /tmp/./install-motion.sh
-RUN /tmp/./install-motion.sh
+RUN apt-get update && apt-get upgrade && apt-get install motion && && rm -rf /var/lib/apt/lists/*
+RUN mkdir /mnt/motion && chown motion /mnt/motion
+
+EXPOSE 8081
 
 CMD /./entrypoint.sh
-
-EXPOSE 80
